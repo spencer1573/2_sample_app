@@ -4,7 +4,7 @@ class StaticPagesControllerTest < ActionController::TestCase
   
   #setup is special because it is run before every test.
   def setup
-    @base_title = "Ruby on Rails Tut Samle App"
+    @base_title = "Ruby on Rails Tut Sample App"
   end
   
   test "should get home" do

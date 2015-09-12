@@ -1,0 +1,53 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  padding-top: 60px;
+}
+
+/* still can't find out where this section is 
+ it doesn't seem to change the divs but i could try 
+ everything i type it does nothing for the page this 
+ must be for a future thing 
+ i've checked the page source and nothing is in the heading 
+ after doing a few tests it looks like this does nothing */
+section {
+  overflow: auto;
+}
+
+/* this does nothing either right now, at least nothing that i
+can see */
+textarea {
+  resize: vertical;
+  //font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+}
+
+.center {
+  text-align: center;
+  //font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1; //the default value is normal
+}
+
+/*
+  this is super interesting and explained a ton!
+  https://css-tricks.com/rems-ems/
+*/
+h1 {
+  font-size: 3em; // 1em == 16px so 3em = 48px
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  // don't know why we added this because that falls under .center
+  text-align: center;  
+}
+
+h2 {
+  font-size: 1.2em; 
+  letter-spacing: -2px;
+}

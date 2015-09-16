@@ -1,6 +1,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+/*$light-grey: #777; #already defined in bootstrap 
+"via the bootstrap-sass gem"
+*/
+$gray-medium-light: #eaeaea;
+
+
 body {
   padding-top: 60px;
 }
@@ -25,11 +32,11 @@ textarea {
 .center {
   text-align: center;
   //font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+  h1 {
+    margin-bottom: 10px;
+  }
 }
 
-.center h1 {
-  margin-bottom: 10px;
-}
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1; //the default value is normal
@@ -45,9 +52,74 @@ h1 {
   margin-bottom: 30px;
   // don't know why we added this because that falls under .center
   text-align: center;  
+  
 }
 
 h2 {
   font-size: 1.2em; 
-  letter-spacing: -2px;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $gray-light;
 }
+
+/* i think this stuff will come into play later */
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+/* remember this isn't for an actual logo.. its for 
+something called logo that is some main text in the navbar
+with the id of logo... not the best naming in my opinion */
+#logo {
+  float: left;
+  margin-right: 10px;
+  //padding-left: 30px;
+  font-size: 1.7em; // 1em == 16px
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $gray-medium-light;
+  color: $gray-light;
+  a {
+    color: $gray;
+    &:hover {
+      color: $gray-darker;
+    }
+  }
+  small {
+    float: left;
+  }  
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }    
+  }  
+}
+
+
+
+
+
+
+
+
+

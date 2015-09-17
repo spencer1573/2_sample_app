@@ -13,10 +13,15 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", about_path
     # for some reason this works now and it wasn't before. 
     # i don't know what i did differently.
-    assert_select "a[href=?]", signup_path
-    #puts 
+    
+    # i think this is probably a pointless test because 
+    # at 'get signup_path' you go to the link so it gets tested there
+    # no need to test it twice. 
+    
+    #assert_select "a[href=?]", signup_path
     get signup_path
-    assert_select "title", "Sign up | Ruby on Rails Tut Sample App"
+    assert_select "title", full_title("Sign up")
+    
   end  
   
 end

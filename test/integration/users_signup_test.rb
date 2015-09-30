@@ -13,7 +13,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   
     assert_no_difference 'User.count' do 
     
-      post user_path, user: { name: "",
+      post users_path, user: { name: "",
                               email: "user@invalid",
                               password:               "foo",
                               password_confirmation:  "bar" 
@@ -22,5 +22,5 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
     assert_template 'users/new'
   end
-  
+
 end

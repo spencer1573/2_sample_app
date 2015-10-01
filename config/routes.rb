@@ -8,12 +8,14 @@ Rails.application.routes.draw do
 # static_pages#help
 # i don't know why they are different. i will find out sometime. 
   get 'help'    => 'static_pages#help'
-  
   get 'about'   => 'static_pages#about'
-  
   get 'contact' => 'static_pages#contact'
   
   get 'signup'  => 'users#new'
+  
+  get 'login'   => 'sessions#new'
+  get 'login'   => 'sessions#create'
+  get 'logout'  => 'sessions#destroy'
   
   resources :users
 

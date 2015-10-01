@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   root             'static_pages#home'
 # notice how important to distinguish
 # static_pages/help

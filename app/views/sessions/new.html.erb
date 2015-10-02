@@ -1,2 +1,27 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<% provide(:title, "Log in") %>
+<h1>Log in</h1>
+
+<!--i noticed that when i didn't have row the edges weren't flush
+    on the right and left sides -->
+<div class="row">
+  <!-- i noticed that 'col-md-offset-3 moves the bar 3 * 1/12ths
+       units to to the right from the left side of the screen
+       'col-md-6 moves' makes the unit 6 * 1/12th of a size-->
+  <div class="col-md-offset-3 col-md-6">
+    <!-- the form doesn't show up if you don't make the first
+         line return a line -->
+    <%= form_for(:session, url: login_path) do |f| %>
+    
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+      
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+      
+      <%= f.submit "Log in", class: "btn btn-primary" %>
+    
+    <% end %>
+    
+    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+  </div>
+</div>

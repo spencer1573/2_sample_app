@@ -1,21 +1,24 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
+  get     'sessions/new'
 
-  root             'static_pages#home'
+  root    'static_pages#home'
 # notice how important to distinguish
 # static_pages/help
 # vs
 # static_pages#help
 # i don't know why they are different. i will find out sometime. 
-  get 'help'    => 'static_pages#help'
-  get 'about'   => 'static_pages#about'
-  get 'contact' => 'static_pages#contact'
+  get     'help'    => 'static_pages#help'
+  get     'about'   => 'static_pages#about'
+  get     'contact' => 'static_pages#contact'
   
-  get 'signup'  => 'users#new'
-  
-  get 'login'   => 'sessions#new'
-  get 'login'   => 'sessions#create'
-  get 'logout'  => 'sessions#destroy'
+  get     'signup'  => 'users#new'
+
+# figured out how important it is that you don't always put get for routes
+# sometimes you put post and delete. for security we better make sure
+# we descriptify posts... i'm guessing.
+  get     'login'   => 'sessions#new'
+  post    'login'   => 'sessions#create'
+  delete  'logout'  => 'sessions#destroy'
   
   resources :users
 

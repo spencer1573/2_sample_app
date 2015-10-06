@@ -15,10 +15,6 @@ class SessionsController < ApplicationController
       
     end
   end
-  
-  def logged_in?
-    !current_user.nil?
-  end
 
   def destory
   end

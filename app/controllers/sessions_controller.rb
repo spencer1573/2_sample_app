@@ -15,8 +15,11 @@ class SessionsController < ApplicationController
       
     end
   end
-
-  def destory
+  
+  # found a problem, it said 'destory' so it wasn't working
+  def destroy
+    log_out
+    redirect_to root_url
   end
   
 end

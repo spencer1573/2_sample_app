@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   
   # found a problem, it said 'destory' so it wasn't working
   def destroy
-    log_out
+    log_out if logged_in?
     redirect_to root_url
   end
   

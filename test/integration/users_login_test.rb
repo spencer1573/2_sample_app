@@ -6,6 +6,9 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   # end
  
   def setup
+    # if you are tracing where michael 
+    # is located it is in the /test/fixtures/users.yml
+    # i believe... i could be wrong.
     @user = users(:michael)
   end
   
@@ -41,5 +44,8 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     get root_path
     assert flash.empty?, "the flash is displaying on the second page"
   end
+  
+  test "login with remembering" do
+    log_in_as(@user)
   
 end

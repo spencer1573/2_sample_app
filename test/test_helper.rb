@@ -12,4 +12,27 @@ class ActiveSupport::TestCase
   def is_logged_in?
     !session[:user_id].nil?
   end
+  
+  def log_in_as(user, options = {})
+    # after sandboxing this concept i found out that this 
+    # only equals the password option if it exists
+    # if it doesn't [exist] it automatically is assigned
+    # the string 'password'
+    password    = options[:password]    || 'password'
+    remember_me = options[:remember_me] || '1'
+    if integration_test?
+      post login_path, session: { email:       user.email,  
+                                  password:    password,
+                                  remember_me: remember_me } 
+    else
+      session[:user_id] = user.id
+    end
+  end  
+  
+  private
+  
+    def integration_test?
+      defined?(post_via_redirect)
+    end
+  
 end

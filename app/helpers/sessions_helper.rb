@@ -21,7 +21,7 @@ module SessionsHelper
     if (user_id = session[:user_id])
       @current_user ||= User.find_by(id: user_id)
     elsif (user_id = cookies.signed[:user_id])
-      raise   # this raise is here to see if the test still pass when it is
+      #raise   # this raise is here to see if the test still pass when it is
       # run and that the raise doesn't happen.
       user = User.find_by(id: user_id)
       if user && user.authenticated?(cookies[:remember_token])

@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   post    'login'   => 'sessions#create'
   delete  'logout'  => 'sessions#destroy'
   
+  # i think because of this everything in the app/views/users folder
+  # is put in automatically and paired up so you don't have to 
+  # manually do it.
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.

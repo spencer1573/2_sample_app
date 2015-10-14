@@ -13,6 +13,10 @@
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to "Profile", current_user %></li>
+              <!-- this is refering to rake routes' 'resources :users'
+                   basically edit_user_path method seems to just comes
+                   with rails or something when you call 'resources :users'-->
+              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
               <li><%= link_to "Settings", '#' %></li>
               <li class="divider"></li>
               <li>

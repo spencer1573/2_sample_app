@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def create
     
     @user = User.new(user_params) # not the final implementation!
-    
+    # if save method is successful it returns true
     if @user.save
       log_in @user
       flash[:success] = "Welcome to the Sample App!"
@@ -28,6 +28,20 @@ class UsersController < ApplicationController
   
   def edit
     @user = User.find(params[:id])
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    #update_attributes returns true or false
+    # depending on whether or not it was successful
+    # in updating attributes
+    # user_params goes into update attributes to stop
+    # mass assignment vulnerability
+    if @user.update_attributes(user_params)
+      # enter code to eventually handle successful update
+    else
+      render 'edit'
+    end
   end
   
   private

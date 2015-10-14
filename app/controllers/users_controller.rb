@@ -38,7 +38,8 @@ class UsersController < ApplicationController
     # user_params goes into update attributes to stop
     # mass assignment vulnerability
     if @user.update_attributes(user_params)
-      # enter code to eventually handle successful update
+      flash[:success] = "Profile updated"
+      redirect_to @user
     else
       render 'edit'
     end

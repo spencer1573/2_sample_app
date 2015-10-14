@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   
   has_secure_password
   
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
   def User.digest(string)
     # this is what i think is happening for thist first line

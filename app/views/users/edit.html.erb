@@ -4,6 +4,14 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+    <!-- when form_for(@user) is called
+         rails always askes @user.new_record?
+         if it is a new record then the form
+         is for creation of a new one (true)
+         rails will then POST
+         if it is already in the database then
+         it goes through new record == (false)
+         rails will then PATCH -->
     <%= form_for(@user) do |f| %>
       <!-- i believe you can write this out like this: -->
       <!-- render partial: 'shared/error_messages -->

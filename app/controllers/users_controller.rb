@@ -1,4 +1,14 @@
 class UsersController < ApplicationController
+  # i think i understand this
+  # the before_action refers to doing the
+  # 'logged_in_user' method and then 
+  # only 
+  # can this user access
+  # edit and update
+  # without the only restriction, the before_action
+  # applies to every method in the UsersController
+  # not sure about the private methods
+  before_action :logged_in_user, only: [:edit, :update]
   
   def show
     @user = User.find(params[:id])
@@ -51,5 +61,16 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
     end
+    
+    def logged_in_user
+      unless logged_in?
+        # this is about the flash hash:
+        # http://api.rubyonrails.org/classes/ActionDispatch/Flash/FlashHash.html
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
+    end
+    
+    
 
 end

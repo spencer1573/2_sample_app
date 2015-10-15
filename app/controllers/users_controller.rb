@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   
   def create
     
-    @user = User.new(user_params) # not the final implementation!
+    @user = User.new(user_params)
     # if save method is successful it returns true
     if @user.save
       log_in @user

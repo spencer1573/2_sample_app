@@ -17,16 +17,16 @@ class UsersControllerTest < ActionController::TestCase
     # but for readability:
     get :edit, id: @user
     assert_not flash.empty?
+    # login_url refers to the get login route in routes.rb
+    # to access '/users/1/edit' you would type
+    # edit_user_path(1) instead of login_url
     assert_redirected_to login_url
-    # right now i'm trying to figure out how to do a 
-    # users/1/edit like login_url
-    
-    byebug
   end
   
-  
-  
- # test "should redirect update when not"
-
+  test "should redirect update when not logged in" do
+    patch :update, id: @user, user: { name: @user.name, email: @user.email }
+    assert_not flash.empty?
+    assert_redirected_to login_url
+  end
 
 end

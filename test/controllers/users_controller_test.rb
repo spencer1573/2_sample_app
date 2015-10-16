@@ -18,6 +18,10 @@ class UsersControllerTest < ActionController::TestCase
     get :edit, id: @user
     assert_not flash.empty?
     assert_redirected_to login_url
+    # right now i'm trying to figure out how to do a 
+    # users/1/edit like login_url
+    
+    byebug
   end
   
   

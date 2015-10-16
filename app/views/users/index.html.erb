@@ -1,0 +1,17 @@
+<%= provide(:title, 'All users') %>
+<h1>All users</h1>
+
+<ul class="users">
+  <!--notice that when it does
+      form_for then it needs to include a
+      < % = not a < % 
+      but 
+      for this each it uses
+      < % -->
+  <% @users.each do |user| %>
+    <li>
+      <%= gravatar_for user, size: 50 %>
+      <%= link_to user.name, user %>
+    </li>
+  <% end %>
+</ul>

@@ -12,6 +12,10 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
   
   def index
+    # i don't think this is going to work but i'm going to see
+    # what micheal has in mind.
+    # notice its users not user
+    @users = User.all
   end
   
   

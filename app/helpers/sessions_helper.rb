@@ -12,6 +12,11 @@ module SessionsHelper
     cookies.permanent[:remember_token] = user.remember_token
   end
   
+  def current_user?(user)
+    user == current_user
+  end
+  
+  
   #this makes it so you don't have to look up the
   # the user all the time. its the sort of thing you need
   # to implement in your noko_convert

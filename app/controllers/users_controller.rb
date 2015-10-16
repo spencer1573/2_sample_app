@@ -65,6 +65,7 @@ class UsersController < ApplicationController
     
     def logged_in_user
       unless logged_in?
+        store_location
         # this is about the flash hash:
         # http://api.rubyonrails.org/classes/ActionDispatch/Flash/FlashHash.html
         flash[:danger] = "Please log in."

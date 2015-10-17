@@ -12,8 +12,12 @@ User.create!( name:  "Example User",
               password_confirmation: "foobar" )
               
 99.times do |n|
+  
+  # "NOTE: While Faker generates data at random, 
+  # returned values are not guaranteed to be unique."
+  # -https://github.com/stympy/faker
   name = Faker::Name.name
-  email = "example-#{ n + 1 }@ railstutorial.org"
+  email = "example-#{ n + 1 }@railstutorial.org"
   password = "password"
   User.create!(name:  name,
                email: email,

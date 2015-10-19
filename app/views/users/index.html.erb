@@ -1,6 +1,8 @@
 <%= provide(:title, 'All users') %>
 <h1>All users</h1>
 
+<%= will_paginate %>
+
 <ul class="users">
   <!--notice that when it does
       form_for then it needs to include a
@@ -15,3 +17,5 @@
     </li>
   <% end %>
 </ul>
+
+<%= will_paginate %>

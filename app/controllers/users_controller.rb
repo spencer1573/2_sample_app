@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     # i don't think this is going to work but i'm going to see
     # what micheal has in mind.
     # notice its users not user
-    @users = User.all
+    @users = User.paginate(page: params[:page])
   end
   
   

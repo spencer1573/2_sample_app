@@ -19,9 +19,8 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
       # so this is saying there should be an html link, called by each
       # user name that is linked to their user profile.
       assert_select 'a[href=?]', user_path(user), text: user.name
-      
     end
-    byebug
+
   end
   
   

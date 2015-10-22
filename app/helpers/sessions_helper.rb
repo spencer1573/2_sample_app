@@ -25,6 +25,9 @@ module SessionsHelper
   def current_user
     if (user_id = session[:user_id])
       @current_user ||= User.find_by(id: user_id)
+      byebug
+      # just taking apart current user to make sure i understand
+      # what was written
     elsif (user_id = cookies.signed[:user_id])
       #raise   # this raise is here to see if the test still pass when it is
       # run and that the raise doesn't happen.

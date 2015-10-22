@@ -1,6 +1,11 @@
 <li>
   <%= gravatar_for user, size: 50 %>
   <%= link_to user.name, user %>
+  <!-- && !current_user?(user) means to not create 
+        the delete for the current user because we don't
+        want to delete ourselves from the list. in other words
+        a user can't delete itself.
+      -->
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "delete", user, method: :delete,
                                   data: { confirm: "You sure?" } %>

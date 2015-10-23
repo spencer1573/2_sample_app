@@ -6,7 +6,18 @@
         want to delete ourselves from the list. in other words
         a user can't delete itself.
         I'm still exploring the 'method: :delete'
+        here is a link to the link_to documentation
+        http://api.rubyonrails.org/classes/ActionView/Helpers/UrlHelper.html
+        also i found that if you have
+        link_to "asoidfh", user, method: :delete
+        then it creates this:
+        "<a rel=\"nofollow\" data-method=\"delete\" href=\"/users/1\">asoidfh</a>"
+        the rel="nofollow" means not to follow the link in google page rank.
+        the reason why this is important is because we don't want a spider to
+        just click on every delete button deleting users when its trying to index
+        useful links.
       -->
+  <% byebug %>
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "delete", user, method: :delete,
                                   data: { confirm: "You sure?" } %>

@@ -5,6 +5,7 @@
         the delete for the current user because we don't
         want to delete ourselves from the list. in other words
         a user can't delete itself.
+        I'm still exploring the 'method: :delete'
       -->
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "delete", user, method: :delete,

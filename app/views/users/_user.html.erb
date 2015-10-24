@@ -16,8 +16,10 @@
         the reason why this is important is because we don't want a spider to
         just click on every delete button deleting users when its trying to index
         useful links.
+        when it says user and then method: :delete i believe that refers
+        to the users_controller.rb and the destroy method in that controller
       -->
-  <% byebug %>
+  
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "delete", user, method: :delete,
                                   data: { confirm: "You sure?" } %>

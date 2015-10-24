@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   # without the only restriction, the before_action
   # applies to every method in the UsersController
   # not sure about the private methods
-  before_action :logged_in_user, only: [:index, :edit, :update]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
   
   def index
@@ -62,6 +62,15 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+  
+  def destroy
+    # i guess that the method: :delete produces
+    # a params[:id] when it goes to the next page or fulfills
+    # the destroy action
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted"
+    redirect_to users_url
   end
   
   private

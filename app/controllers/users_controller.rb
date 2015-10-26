@@ -8,8 +8,9 @@ class UsersController < ApplicationController
   # without the only restriction, the before_action
   # applies to every method in the UsersController
   # not sure about the private methods
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :logged_in_user,  only: [:index, :edit, :update, :destroy]
+  before_action :correct_user,    only: [:edit, :update]
+  before_action :admin_user,      only: :destroy
   
   def index
     # i don't think this is going to work but i'm going to see
@@ -73,6 +74,8 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
   
+
+  
   private
   
     def user_params
@@ -95,5 +98,7 @@ class UsersController < ApplicationController
       redirect_to(root_url) unless current_user?(@user)
     end
     
-
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
 end

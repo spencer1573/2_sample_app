@@ -19,7 +19,6 @@
         when it says user and then method: :delete i believe that refers
         to the users_controller.rb and the destroy method in that controller
       -->
-  
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "delete", user, method: :delete,
                                   data: { confirm: "You sure?" } %>

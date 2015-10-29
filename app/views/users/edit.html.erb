@@ -1,5 +1,6 @@
  <!--i think provide is like setting an attribute of the page.-->
 <% provide(:title, "Edit user") %>
+<% provide(:button_text, 'Save changes') %>
 <h1>Update your profile</h1>
 
 <div class="row">
@@ -12,31 +13,7 @@
          if it is already in the database then
          it goes through new record == (false)
          rails will then PATCH -->
-    <%= form_for(@user) do |f| %>
-      <!-- i believe you can write this out like this: -->
-      <!-- render partial: 'shared/error_messages -->
-      <!-- http://api.rubyonrails.org/classes/ActionView/PartialRenderer.html -->
-      <!-- this refers to the view here: -->
-      <!-- app/views/shared/_error_messages.html.erb -->
-      <%= render 'shared/error_messages' %>
-      
-      <%= f.label :name %>
-      <!--form-control: all it says in the ruby on rails tutorial is-->
-      <!-- CSS class (which has a special meaning in bootstrap)-->
-      <%= f.text_field :name, class: 'form-control' %>
-      
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-      
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-      
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
-      
-      <%= f.submit "Save changes", class: "btn btn-primary" %>
-    <% end %>
-    
+    <%= render 'form' %>
     <div class="gravatar_edit">
       <%= gravatar_for @user %>
       <!-- you might forget that target="_blank" opens in a new screen -->

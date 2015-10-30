@@ -24,6 +24,12 @@ Rails.application.routes.draw do
   # is put in automatically and paired up so you don't have to 
   # manually do it.
   resources :users
+  # this is what only does:  
+  # https://github.com/plataformatec/devise/wiki/How-To:-Define-resource-actions-that-require-authentication-using-routes.rb
+  # this is what resources does: 
+  # http://stackoverflow.com/questions/4420754/get-match-and-resources-in-routes-rb
+  # so this is another way of saying what the line below says:
+  # get    "account_activations/:id/edit" => "account_activations#edit",    :as => 'edit_'
   resources :account_activations, only: [:edit]
 
   # The priority is based upon order of creation: first created -> highest priority.

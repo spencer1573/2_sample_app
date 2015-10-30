@@ -28,8 +28,9 @@ Rails.application.routes.draw do
   # https://github.com/plataformatec/devise/wiki/How-To:-Define-resource-actions-that-require-authentication-using-routes.rb
   # this is what resources does: 
   # http://stackoverflow.com/questions/4420754/get-match-and-resources-in-routes-rb
-  # so this is another way of saying what the line below says:
-  # get    "account_activations/:id/edit" => "account_activations#edit",    :as => 'edit_'
+  # so this is another way of saying what the line below says: (i believe)
+  # notice how :id is the variable in this route.
+  # get    "account_activations/:id/edit" => "account_activations#edit",    :as => 'edit_account_activations'
   resources :account_activations, only: [:edit]
 
   # The priority is based upon order of creation: first created -> highest priority.

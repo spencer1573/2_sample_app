@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token
+  # "we passed before_save an explicit block"
+  # this site seems useful:
+  # http://mudge.name/2011/01/26/passing-blocks-in-ruby-without-block.html
   before_save { self.email = email.downcase }
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

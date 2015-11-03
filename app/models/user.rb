@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :activation_token
   # "we passed before_save an explicit block"
   # this site seems useful:
   # http://mudge.name/2011/01/26/passing-blocks-in-ruby-without-block.html

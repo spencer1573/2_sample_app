@@ -7,7 +7,8 @@ class UserMailer < ApplicationMailer
   #
   def account_activation(user)
     @user = user
-
+    # so mail is a method that takes in to and subject symbols
+    # or key value pairs?
     mail to: user.email, subject: "Account activation"
   end
 

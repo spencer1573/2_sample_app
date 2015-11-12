@@ -35,11 +35,20 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     # if save method is successful it returns true
     if @user.save
-      log_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      # so i believe that 
+      # UserMailer.account_activation(@user)
+      # is an ActionMailer::MessageDelivery object
+      # and when deliver_now is called on it then 
+      # it sends the email
+      # there are other options for delivery and other stuff
+      # for the actionmailer object found here:
+      # http://edgeapi.rubyonrails.org/classes/ActionMailer/MessageDelivery.html
+      UserMailer.account_activation(@user).deliver_now
+      
+      flash[:info] = "Please check your email to activate your account."
     # rails automatically infers this means
     # redirect_to user_url(@user)
-      redirect_to @user 
+      redirect_to root_url 
     else
       render 'new'
     end

@@ -8,10 +8,14 @@ class UserMailerTest < ActionMailer::TestCase
     # this account_activation method is found in 
     # app/controllers/mailers/user_mailer.rb
     mail = UserMailer.account_activation(user)
-    byebug
-   # assert_equal "Account activation", mail.subject
-   # assert_equal [user.email], mail.to
-  #  assert_equal ["noreply@example.com"]
+    # assert_equal assertions count as one
+    assert_equal "Account activation", mail.subject
+    assert_equal [user.email], mail.to
+    assert_equal ["noreply@example.com"], mail.from
+    # assert_match count as two assertions for some reason
+    assert_match user.name,               mail.body.encoded
+    assert_match user.activation_token,   mail.body.encoded
+    assert_match CGI::escape(user.email), mail.body.encoded
     
   end
 

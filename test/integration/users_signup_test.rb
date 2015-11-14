@@ -21,7 +21,12 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
     assert_template 'users/new'
     #take these asserts apart next time
+    # so looking at the source leads me to believe
+    # that of course div is the tag and error_explanation is
+    # the id as notified by the # (pound sign)
     assert_select 'div#error_explanation'
+    # the period denotes class i'm guessing just going of the source
+    # and that class is field_with_errors
     assert_select 'div.field_with_errors'
   end
   

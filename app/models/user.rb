@@ -41,8 +41,16 @@ class User < ActiveRecord::Base
     update_attribute(:remember_digest, User.digest(remember_token))
   end
   
-  def authenticated?(remember_token)
-    return false if remember_digest.nil?
+  def authenticated?(attribute, token)
+    # so because we are in the user model
+    # we can ommit the self. in send (self.send(#{...)
+    # send makes it the same as sending a method to 
+    # i'm guessing user.
+    # attribute makes it so that we can verify either 
+    # the email token or the password token with authenitcated
+    # i think.
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
   

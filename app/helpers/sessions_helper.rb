@@ -31,7 +31,7 @@ module SessionsHelper
       #raise   # this raise is here to see if the test still pass when it is
       # run and that the raise doesn't happen.
       user = User.find_by(id: user_id)
-      if user && user.authenticated?(cookies[:remember_token])
+      if user && user.authenticated?(:remember, cookies[:remember_token])
         log_in user
         @current_user = user
       end

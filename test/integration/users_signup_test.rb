@@ -5,6 +5,12 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   #   assert true
   # end
   
+  def setup
+    # this seems pretty self explanitory
+    ActionMailer::Base.deliveries.clear
+  end
+  
+  
   test "invalid signup information" do
     # remember this isn't necessary it just helps for
     # readability and sometimes errors, talking about

@@ -25,6 +25,9 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                               password_confirmation:  "bar" }
     
     end
+    
+    assert_equal 1, ActionMailer::Base.deliveries.size
+    
     assert_template 'users/new'
     #take these asserts apart next time
     # so looking at the source leads me to believe

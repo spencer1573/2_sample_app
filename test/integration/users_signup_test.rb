@@ -29,7 +29,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_equal 1, ActionMailer::Base.deliveries.size
     # this assigns is a special test method... its not in the model or anything
     user = assigns(:user)
-    
+    assert_not user.activated?
     
     assert_template 'users/new'
     #take these asserts apart next time

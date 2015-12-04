@@ -25,12 +25,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                               password_confirmation:  "bar" }
     
     end
-    
-    assert_equal 1, ActionMailer::Base.deliveries.size
-    # this assigns is a special test method... its not in the model or anything
-    user = assigns(:user)
-    assert_not user.activated?
-    
+  
     assert_template 'users/new'
     #take these asserts apart next time
     # so looking at the source leads me to believe
@@ -50,7 +45,11 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                             password:              "password",
                                             password_confirmation: "password" }
     end
-    #assert_template 'users/show'
-    #assert is_logged_in?
+    assert_equal 1, ActionMailer::Base.deliveries.size
+    # this assigns is a special test method... its not in the model or anything
+    user = assigns(:user)
+    assert_not user.activated?
+    log_in_as(user)
+    assert_not is_logged_in?
   end
 end

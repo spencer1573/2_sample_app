@@ -49,7 +49,12 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     # this assigns is a special test method... its not in the model or anything
     user = assigns(:user)
     assert_not user.activated?
+    # this attempts to log in before activaiton
     log_in_as(user)
+    assert_not is_logged_in?
+    # it is avalid token but its for the wrong user
+    # (email as identifier possibly)
+    get edit_account_activation_path('invalid token')
     assert_not is_logged_in?
   end
 end

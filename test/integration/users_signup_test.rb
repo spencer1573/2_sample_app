@@ -62,5 +62,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     # valid activation token
     get edit_account_activation_path(user.activation_token, email: user.email)
     assert user.reload.activated?
+    # this apparently doesn't happen automatically
+    follow_redirect!
   end
 end

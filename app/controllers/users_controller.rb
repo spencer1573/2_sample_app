@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       # there are other options for delivery and other stuff
       # for the actionmailer object found here:
       # http://edgeapi.rubyonrails.org/classes/ActionMailer/MessageDelivery.html
-      UserMailer.account_activation(@user).deliver_now
+      @user.send_activation_email
       
       flash[:info] = "Please check your email to activate your account."
     # rails automatically infers this means

@@ -83,17 +83,6 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
   
-  def activate 
-    update_attribute(:activated,  true)
-    update_attribute(:activated_at, Time.zone.now)
-  end
-  
-  def send_activation_email
-    #self is optional inside the model as a substitute for @user
-    UserMailer.account_activation(self).deliver_now
-  end
-
-  
   private
   
     def user_params

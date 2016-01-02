@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   # notice how :id is the variable in this route.
   # get    "account_activations/:id/edit" => "account_activations#edit",    :as => 'edit_account_activations'
   resources :account_activations, only: [:edit]
+  
+  resources :password_resets,     only: [:new, :create, :edit, :update]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -7,6 +7,10 @@
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
       
+      <!--without the 'btn' in class ... the button looks thinner
+          and the button has sharp edges not rounded ones
+          without the 'btn-primary' the button turns 
+          grey instead of blue-->
       <%= f.submit "Submit", class: "btn btn-primary" %>
     <% end %>
   </div>

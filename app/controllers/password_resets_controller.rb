@@ -16,6 +16,11 @@ class PasswordResetsController < ApplicationController
       flash.now[:danger] = "Email address not found"
       # i believe this pulls up the 
       # new in 'app/views/password_resets/new.html.erb'
+      # this was verified by breaking the new.html.erb in that folder
+      # its routed to initially here:
+      # <%= link_to "(forgot password)", new_password_reset_path %>
+      # i'm guessing that they aren't really interchangable because
+      # they do different things.
       render 'new'
     end
     

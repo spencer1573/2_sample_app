@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-  attr_accessor :remember_token, :activation_token
+  # this sets up getters and setters for these three methods in the
+  # class User see
+  # http://stackoverflow.com/questions/4370960/what-is-attr-accessor-in-ruby
+  attr_accessor :remember_token, :activation_token, :reset_token
   # that just means search for and do those methods
   # before_save and 
   # before_create

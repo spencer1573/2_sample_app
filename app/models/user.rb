@@ -94,6 +94,10 @@ class User < ActiveRecord::Base
   end
   
   def send_password_reset_email
+    # this UserMailer is found in the 
+    # controllers/mailers/user_mailer.rb file
+    # self must mean 'the current user'
+    # and deliver_now is obvious.
     UserMailer.password_reset(self).deliver_now
   end
     

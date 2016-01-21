@@ -98,6 +98,7 @@ class User < ActiveRecord::Base
     # controllers/mailers/user_mailer.rb file
     # self must mean 'the current user'
     # and deliver_now is obvious.
+    # how does .deliver_now connect?
     UserMailer.password_reset(self).deliver_now
   end
     

@@ -90,7 +90,6 @@ class User < ActiveRecord::Base
     # it doesn't work during byebug because its not commiting changes to the
     # database.
     update_attribute(:reset_sent_at, Time.zone.now)
-   
   end
   
   def send_password_reset_email

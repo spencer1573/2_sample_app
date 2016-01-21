@@ -1,7 +1,9 @@
 == README
 
-# you are on listing 10.42
-
+# you are on listing 10.46
+# thing to investigate
+# /app/views/user_mailer/password_reset.text
+# line 101 of the user model
 
 
 This README would normally document whatever steps are necessary to get the

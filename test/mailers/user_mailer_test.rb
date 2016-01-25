@@ -22,8 +22,8 @@ class UserMailerTest < ActionMailer::TestCase
     
   end
 	
-
-  
+	# to test just the password_reset
+	# rake test TEST=test/mailers/user_mailer_test.rb TESTOPTS="--name password_reset" 
 
 	test "password_reset" do 
 		# users(:#{fixture name}) is how you access

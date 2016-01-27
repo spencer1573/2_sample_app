@@ -29,5 +29,10 @@ class UserMailerTest < ActionMailer::TestCase
 		# users(:#{fixture name}) is how you access
 		# the fixtures... found in test/fixtures/users.yml
 		user = users(:michael)
+		# User.new_token appears to come from line 38 of the user model
+ 		# reset_token starts on line 5 of the user model, and it is 
+		# setter is being assigned a new random url safe 22 character
+		# base 64 string.
+		user.reset_token = User.new_token
   end
 end

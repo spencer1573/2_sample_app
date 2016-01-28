@@ -34,5 +34,9 @@ class UserMailerTest < ActionMailer::TestCase
 		# setter is being assigned a new random url safe 22 character
 		# base 64 string.
 		user.reset_token = User.new_token
+		# this password_reset is found in the
+		# in app/mailers/usermailer.rb, i don't believe 
+		# the mail actually delievers it just sends
+		mail = UserMailer.password_reset(user)
   end
 end

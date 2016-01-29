@@ -38,5 +38,11 @@ class UserMailerTest < ActionMailer::TestCase
 		# in app/mailers/usermailer.rb, i don't believe 
 		# the mail actually delievers it just sends
 		mail = UserMailer.password_reset(user)
+		# 
+		byebug
+		#
+		assert_equal "Password reset", mail.subject
+
+
   end
 end

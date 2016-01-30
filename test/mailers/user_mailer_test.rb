@@ -44,7 +44,11 @@ class UserMailerTest < ActionMailer::TestCase
 		# "ActionMailer::MessageDelivery" 
 		# hopefully i can learn where subject is defined first in 
 		# in the MessageDelivery class/model.
+		# in the new 5.0 version of rails it could be defining 
+		# mail.subject on line 549 of 
+		# https://github.com/rails/rails/blob/master/actionmailer/lib/action_mailer/base.rb
 		assert_equal "Password reset", mail.subject
+
 
 
   end

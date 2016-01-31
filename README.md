@@ -4,6 +4,12 @@
 # thing to investigate
 # /app/views/user_mailer/password_reset.text
 # line 101 of the user model
+# find out what a  payload is from line 549 from 
+# https://github.com/rails/rails/blob/master/actionmailer/lib/action_mailer/base.rb
+# - trying ti figure out where the mail.subject first get defined
+# - 
+
+
 
 
 This README would normally document whatever steps are necessary to get the

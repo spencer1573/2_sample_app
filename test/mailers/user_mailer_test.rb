@@ -48,7 +48,13 @@ class UserMailerTest < ActionMailer::TestCase
 		# mail.subject on line 549 of 
 		# https://github.com/rails/rails/blob/master/actionmailer/lib/action_mailer/base.rb
 		assert_equal "Password reset", mail.subject
-
+		# for some reson mail
+		# mail.to is a different class than mail.subject
+		# mail.subject is a string 
+		# mail.to's class is "Mail::AddressContainer"
+		# http://www.rubydoc.info/github/mikel/mail/Mail/AddressContainer
+		# and its owner is "ActionMailer::MessageDelivery"
+		assert_equal user.email, mail.to
 
 
   end

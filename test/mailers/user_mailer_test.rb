@@ -54,8 +54,14 @@ class UserMailerTest < ActionMailer::TestCase
 		# mail.to's class is "Mail::AddressContainer"
 		# http://www.rubydoc.info/github/mikel/mail/Mail/AddressContainer
 		# and its owner is "ActionMailer::MessageDelivery"
-		assert_equal user.email, mail.to
-
+		# for some reason mail.to returns the string with brackets
+		# around it like a piece of an array, which makes sense
+    # incase mail to needs to return more than one email address
+		assert_equal [user.email] , mail.to
+		# this mail.from is last touched in 
+		# /app/mailers/application_mailer.rb
+		# on line 2 of that where it sets the default mail.from
+		assert_equal ["noreply@example.com"], mail.from
 
   end
 end

@@ -62,6 +62,18 @@ class UserMailerTest < ActionMailer::TestCase
 		# /app/mailers/application_mailer.rb
 		# on line 2 of that where it sets the default mail.from
 		assert_equal ["noreply@example.com"], mail.from
+		# So mail.body.encoded basically returns 
+		# the entire message literally with all the carriage returns 
+		# and everything and somewhere in there it has 
+		# the user token in the url 
+		assert_match user.reset_token, mail.body.encoded 
+		# so this "common gateway interface" basically is a 
+ 		# handler for http requests its in python too. 
+		# i think its because you don't want to be sending
+		# spaces or weird characters over things
+		assert_match CGI::escape(user.email), "something"
+
+
 
   end
 end

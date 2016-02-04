@@ -71,9 +71,6 @@ class UserMailerTest < ActionMailer::TestCase
  		# handler for http requests its in python too. 
 		# i think its because you don't want to be sending
 		# spaces or weird characters over things
-		assert_match CGI::escape(user.email), "something"
-
-
-
+		assert_match CGI::escape(user.email), mail.body.encoded 
   end
 end

@@ -1,9 +1,15 @@
 <!--i read this website here, and i'm unsure as to why there is no yield
 stackoverflow.com/questions/17457985/yield-and-provide-inside-template
 it could be that yeild is in one of the helpers i'll investigate that tomorrow.
+it appears that the accompanying yield for this provide is located in 
+app/views/layouts/application.html.erb on line 4, 
+because thats where it talks about title. 
 -->
 <% provide(:title, 'Reset password') %>
 <h1>Reset password</h1>
 
 <div class="row">
+	<div class="col-md-6 col-md-offset-3">
+	</div>
+</div>
 

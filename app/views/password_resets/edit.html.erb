@@ -10,6 +10,10 @@ because thats where it talks about title.
 
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
+		<!--I'm going to see what happens if i take out the url thing and add it in-->
+		<%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
+			<%= render 'shared/error_messages' %>
+			
 	</div>
 </div>
 

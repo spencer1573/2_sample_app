@@ -1,4 +1,5 @@
 class PasswordResetsController < ApplicationController
+  before_action :get_user,    only: [:edit, :update]
   def new
   end
 

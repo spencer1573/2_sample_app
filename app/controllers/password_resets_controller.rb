@@ -39,6 +39,14 @@ class PasswordResetsController < ApplicationController
     def get_user
       @user = User.find_by(email: params[:email])
     end
-
-
+    
+    #so i'm not exactly sure how params[:id] returns
+    # the reset token but i guess its somewhere in there
+    # id love to explore that with byebug when i get this
+    # up and running on the imac. 
+    def valid_user
+      unless (@user && @user.activated? &&
+              @user.authenticated?(:reset, params[:id]))
+        redirect_to root_url
+    end
 end

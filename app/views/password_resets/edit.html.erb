@@ -13,7 +13,7 @@ because thats where it talks about title.
 		<!--I'm going to see what happens if i take out the url thing and add it in-->
 		<%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
 			<%= render 'shared/error_messages' %>
-			
+		  <%= byebug =%>	
 			<%= hidden_field_tag :email, @user.email %>
 
 			<%= f.label :password %>

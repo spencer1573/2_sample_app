@@ -22,9 +22,12 @@ because thats where it talks about title.
           identifier it makes the field larger-->
       <%= f.password_field :password, class: 'form-control' %>
         
-      <!--I'm going to see what happens if i take out the "Confirmation" -->
+      <!--I'm going to see what happens if i take out the "Confirmation"
+          so if you take out password confirmation then it just 
+          says "Password confirmation" -->
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
+      
 
       <%= f.submit "Update password", class: "btn btn-primary" %>
     <% end %>

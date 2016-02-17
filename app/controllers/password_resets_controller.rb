@@ -1,8 +1,9 @@
 class PasswordResetsController < ApplicationController
   # so i think this means that before you do the edit or update
   # methods, you need to do get_user and valid user first
-  before_action :get_user,    only: [:edit, :update]
-  before_action :valid_user,  only: [:edit, :update]
+  before_action :get_user,         only: [:edit, :update]
+  before_action :valid_user,       only: [:edit, :update]
+  before_action :check_expiration, only: [:edit, :update]
   
   def new
   end
@@ -34,6 +35,15 @@ class PasswordResetsController < ApplicationController
   def edit
   end
   
+  def update
+    if params[:user][:password].empty?
+      @user.errors.add(:password, "can't be empty")
+      render edit
+    elsif
+
+
+
+      
   private
 
     def get_user

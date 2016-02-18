@@ -39,12 +39,18 @@ class PasswordResetsController < ApplicationController
     if params[:user][:password].empty?
       @user.errors.add(:password, "can't be empty")
       render edit
-    elsif
+      # that is defined in private (user_params)
+    elsif @user.update_attributes(user_params)
 
 
 
       
   private
+
+    def user_params
+      # i will need to investigate what .require(:user) does tommorrow
+      params.require(:user).permit(:password, :password_confirmation)
+    end
 
     def get_user
       @user = User.find_by(email: params[:email])

@@ -1,6 +1,7 @@
 class PasswordResetsController < ApplicationController
   # so i think this means that before you do the edit or update
   # methods, you need to do get_user and valid user first
+  byebug
   before_action :get_user,         only: [:edit, :update]
   before_action :valid_user,       only: [:edit, :update]
   before_action :check_expiration, only: [:edit, :update]
@@ -36,13 +37,17 @@ class PasswordResetsController < ApplicationController
   end
   
   def update
+    
     if params[:user][:password].empty?
       @user.errors.add(:password, "can't be empty")
       render edit
       # that is defined in private (user_params)
     elsif @user.update_attributes(user_params)
+      # i wonder if this log_in comes from the user model
+      log_in @user 
+    end
 
-
+  end
 
       
   private

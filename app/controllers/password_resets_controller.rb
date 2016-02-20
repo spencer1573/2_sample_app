@@ -43,8 +43,14 @@ class PasswordResetsController < ApplicationController
       render edit
       # that is defined in private (user_params)
     elsif @user.update_attributes(user_params)
-      # i wonder if this log_in comes from the user model
+      # this is found in helpers/sessions_helper.rb
+      # all it does is this
+      # session[:user_id] = user.id
+      # where it takes in a user argument
+      # so the question is what does this do to the 
+      # params when the session is changed
       log_in @user 
+
     end
 
   end

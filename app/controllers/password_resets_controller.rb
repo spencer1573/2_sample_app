@@ -50,7 +50,10 @@ class PasswordResetsController < ApplicationController
       # so the question is what does this do to the 
       # params when the session is changed
       log_in @user 
-
+      flash[:success] = "Password has been reset."
+      # i'm guessing that this @user has /user/1 somewhere
+      # in it but i'm not sure... i'll need to look it up tomorrow
+      redirect_to @user
     end
 
   end

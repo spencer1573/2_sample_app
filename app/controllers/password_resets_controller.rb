@@ -1,7 +1,6 @@
 class PasswordResetsController < ApplicationController
   # so i think this means that before you do the edit or update
   # methods, you need to do get_user and valid user first
-  byebug
   before_action :get_user,         only: [:edit, :update]
   before_action :valid_user,       only: [:edit, :update]
   before_action :check_expiration, only: [:edit, :update]
@@ -54,6 +53,11 @@ class PasswordResetsController < ApplicationController
       # i'm guessing that this @user has /user/1 somewhere
       # in it but i'm not sure... i'll need to look it up tomorrow
       redirect_to @user
+    else
+      # i believe that this is located in 
+      # app/views/password_resets/edit
+      # it just renders that view i'm pretty sure
+      render 'edit'
     end
 
   end

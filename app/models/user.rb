@@ -101,6 +101,11 @@ class User < ActiveRecord::Base
     UserMailer.password_reset(self).deliver_now
   end
     
+  def password_reset_expired?
+    # 2.hours.ago returns:
+    # Thu, 25 Feb 2016 03:25:32 UTC +00:00
+    reset_sent_at < 2.hours.ago
+  end
   
   private
     

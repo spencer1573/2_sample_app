@@ -20,6 +20,11 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     # will always return the correct url
     # this is so freakin awesome.
     get new_password_reset_path
+    # so after researching this it sounds like
+    # what it is.. it isn't just asserting
+    # a url... its asserting a template
+    # from the views folder
+    assert_template 'password_resets/new'
   
   end
 

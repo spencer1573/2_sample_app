@@ -25,6 +25,15 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     # a url... its asserting a template
     # from the views folder
     assert_template 'password_resets/new'
+    # TESTING FOR INVALID EMAIL
+    # so using post here instead of get
+    # is important because we are trying to 
+    # create a resource (even though we don't)
+    # and i get that we are putting an email in 
+    # but i wouldn't come up with that method on my own
+    # the password_reset: i have no idea what this is 
+    # refering to.
+    post password_resets_path, password_reset: { email: "" }
   
   end
 

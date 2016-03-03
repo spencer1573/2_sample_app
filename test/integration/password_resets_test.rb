@@ -33,8 +33,11 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     # but i wouldn't come up with that method on my own
     # the password_reset: i have no idea what this is 
     # refering to.
-    post password_resets_path, password_reset: { email: "" }
-  
+    # you can't just foo: { baz: "something" } it will come up with an error
+    # because you don't have curly braces around the whole statement like this
+    # something = {foo: { bar: "baz" }
+    post password_resets_path, password_reset: { email: "something@something.com" }
+
   end
 
 

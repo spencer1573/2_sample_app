@@ -36,7 +36,12 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     # you can't just foo: { baz: "something" } it will come up with an error
     # because you don't have curly braces around the whole statement like this
     # something = {foo: { bar: "baz" }
+    # so after a significant amount of research all i have found is 
+    # post takes in three arguements
+    # and this one below takes a string as a path, and a keyvalue pair that i don't 
+    # quite understand rails is a little too magical sometimes ... it drives me nuts
     post password_resets_path, password_reset: { email: "something@something.com" }
+
 
   end
 

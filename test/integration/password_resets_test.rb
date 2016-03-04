@@ -40,7 +40,15 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     # post takes in three arguements
     # and this one below takes a string as a path, and a keyvalue pair that i don't 
     # quite understand rails is a little too magical sometimes ... it drives me nuts
-    post password_resets_path, password_reset: { email: "something@something.com" }
+    post password_resets_path, password_reset: { email: "" }
+    # so there is a flash message
+    # there for "the flash is empty" is a false statement
+    # and assert_not checks that the statement is false
+    # there for 
+    # assert_not(flash.empty?) => true
+    # it took me a second to reason it out.
+    assert_not flash.empty?
+   
 
 
   end

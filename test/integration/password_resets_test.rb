@@ -48,7 +48,18 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     # assert_not(flash.empty?) => true
     # it took me a second to reason it out.
     assert_not flash.empty?
-   
+    # Valid email
+    
+
+    #set_trace_func proc { |event, file, line, id, binding, classname|
+    #  printf "%8s %s:%-2d %10s %8s\n", event, file, line, id, classname
+    #}
+    
+    post password_resets_path, password_reset: { email: @user.email }
+
+    #byebug
+    
+    
 
 
   end

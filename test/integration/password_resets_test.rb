@@ -49,33 +49,14 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     # it took me a second to reason it out.
     assert_not flash.empty?
     # Valid email
-   
-=begin
-    x = 0 
-    set_trace_func proc { |event, file, line, id, binding, classname|
-      printf "%8s %s:%-2d %10s %8s\n", event, file, line, id, classname
-      x = x + 1
-      if x == 10
-        "to continue press enter"
-        pressy = gets
-        x = 0
-      end
-    }
-=end
-=begin
-    start = DateTime.now.strftime('%Q').to_i / 1000.0
-    set_trace_func proc { |event, file, line, id, binding, classname|
-        now_ms = DateTime.now.strftime('%Q').to_i / 1000.0
-        duration = '%.3f' % (now_ms - start)
-        start = DateTime.now.strftime('%Q').to_i / 1000.0
-        printf "%s %s %8s %s:%-2d %10s %8s\n", DateTime.now.strftime("%S.%L"), duration, event, file, line, id, classname
-    }
-=end
-    puts caller
-    post password_resets_path, password_reset: { email: @user.email }
+    # i don't fully understand it but i'm moving on. 
+    post password_resets_path, password_reset: { email: @user.email } 
+    assert_not_equal @user.reset_digest, @user.reload.reset_digest
+    assert_equal 1, ActionMailer::Base.deliveries.size
+    # because i think the flash is present here saying it was sent
+    assert_not flash.empty?
+    assert_redirected_to root_url
 
-    break 
-    
   end
 
 end

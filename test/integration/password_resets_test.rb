@@ -40,6 +40,7 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     # post takes in three arguements
     # and this one below takes a string as a path, and a keyvalue pair that i don't 
     # quite understand rails is a little too magical sometimes ... it drives me nuts
+    # #QUESTIONUNANSWERED
     post password_resets_path, password_reset: { email: "" }
     # so there is a flash message
     # there for "the flash is empty" is a false statement
@@ -55,8 +56,15 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     assert_equal 1, ActionMailer::Base.deliveries.size
     # because i think the flash is present here saying it was sent
     assert_not flash.empty?
+    # root takes you right to the / url
     assert_redirected_to root_url
-
+    # PASSWORD RESET FORM
+    # for some undetermined reason 
+    # :user is all of the sudden equal to @user.
+    # no idea why.
+    # #QUESTIONUNANSWERED
+    user = assigns(:user)
+  
   end
 
 end

@@ -64,6 +64,14 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     # no idea why.
     # #QUESTIONUNANSWERED
     user = assigns(:user)
+    # WRONG EMAIL
+    user.toggle!(:activated)
+    # i don't entirely understand this, but edit_password_reset
+    # needs an [:id] to function and i'm guessing that its looking 
+    # up the user by the email... and then of course the token fails
+    # i keep getting a 302 number as a return for this get, which
+    # could be a 302 found error code
+    get edit_password_reset_path('wrong token', email: user.email)
   
   end
 

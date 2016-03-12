@@ -72,8 +72,21 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     # i keep getting a 302 number as a return for this get, which
     # could be a 302 found error code
     # #QUESTIONUNANSWERED
-    get edit_password_reset_path('wrong token', email: user.email)
-  
+    get edit_password_reset_path(user.reset_token, email: "")
+    assert_not flash.empty?
+    assert_template 'password_resets/new'
+    # VALID EMAIL
+    post password_resets_path, password_reset: { email: @user.email } 
+    assert_not_equal @user.reset_digest, @user.reload.reset_digest
+    assert_equal 1, ActionMailer::Base.deliveries.size
+    assert_not flash.empty?
+    assert_redirected_to root_url
+    # PASSWORD RESET FORM
+
+
+
+ 
+
   end
 
 end

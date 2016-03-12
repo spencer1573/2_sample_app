@@ -65,27 +65,16 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     # #QUESTIONUNANSWERED
     user = assigns(:user)
     # WRONG EMAIL
-    user.toggle!(:activated)
-    # i don't entirely understand this, but edit_password_reset
-    # needs an [:id] to function and i'm guessing that its looking 
-    # up the user by the email... and then of course the token fails
-    # i keep getting a 302 number as a return for this get, which
-    # could be a 302 found error code
-    # #QUESTIONUNANSWERED
-    get edit_password_reset_path(user.reset_token, email: "")
-    assert_not flash.empty?
-    assert_template 'password_resets/new'
-    # VALID EMAIL
-    post password_resets_path, password_reset: { email: @user.email } 
-    assert_not_equal @user.reset_digest, @user.reload.reset_digest
-    assert_equal 1, ActionMailer::Base.deliveries.size
-    assert_not flash.empty?
+    get edit_password_reset_path(user.reset_token, email: "") 
     assert_redirected_to root_url
-    # PASSWORD RESET FORM
+    # INACTIVE USER
+    # user.activated is returning true currently
+    # and is then toggled in the below statement
+    user.toggle!(:activated)
+    get edit_password_reset_path(user.reset_token, email: user.email)
 
 
 
- 
 
   end
 

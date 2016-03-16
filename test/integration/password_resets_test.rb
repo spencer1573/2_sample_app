@@ -82,6 +82,14 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     assert_template 'password_resets/edit'
     assert_select "input[name=email][type=hidden][value=?]", user.email
     # INVALID PASSWORD & CONFIRMATION 
+    # Q: how do i know the difference between post and patch arguments
+    # like... which arguements go where?
+    # i have no idea why user is taking in password key value pairs
+    # #UNANSWERED_QUESTION
+    patch password_reset_path(user.reset_token), 
+      email: user.email,
+      user: { password:              "foobaz",
+              password_confirmation: "barquux" }
 
 
 

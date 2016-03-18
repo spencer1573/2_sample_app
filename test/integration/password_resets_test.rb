@@ -99,6 +99,14 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     assert_select 'div#error_explanation'
     # VALID PASSWORD & CONFIRMATION
     patch password_reset_path(user.reset_token),
+      email: user.email,
+      user: { password:              "foobaz",
+              password_confirmation: "foobaz" }
+    #logged in magically
+    assert is_logged_in?
+    # showing a flash message
+    assert_not flash.empty?
+    assert_redirected_to user
 
   end
 

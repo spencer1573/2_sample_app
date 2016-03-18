@@ -39,7 +39,12 @@ class PasswordResetsController < ApplicationController
     
     if params[:user][:password].empty?
       @user.errors.add(:password, "can't be empty")
-      render edit
+      # i used to have this as 
+      # render edit
+      # not 
+      # render 'edit'
+      # it was causing some problems
+      render 'edit'
       # that is defined in private (user_params)
     elsif @user.update_attributes(user_params)
       # this is found in helpers/sessions_helper.rb

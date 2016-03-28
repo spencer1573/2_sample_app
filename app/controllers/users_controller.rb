@@ -16,13 +16,14 @@ class UsersController < ApplicationController
     # i don't think this is going to work but i'm going to see
     # what micheal has in mind.
     # notice its users not user
-    @users = User.paginate(page: params[:page])
+    @users = User.where(activated: true).paginate(page: params[:page])
   end
   
   
   def show
     @user = User.find(params[:id])
     #debugger
+    redirect_to root_url and return unless @user.activated?
   end
 
   

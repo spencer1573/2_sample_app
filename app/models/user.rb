@@ -62,8 +62,7 @@ class User < ActiveRecord::Base
   end
   
   def activate 
-    update_attribute(:activated,  true)
-    update_attribute(:activated_at, Time.zone.now)
+    update_attribute(activated: true, activated_at: Time.zone.now)
   end
   
   def send_activation_email
@@ -83,13 +82,13 @@ class User < ActiveRecord::Base
     # User.digest(reset_token)... takes the reset token and then
     # it simply bcrypts it then when the reset token comes back through 
     # it can unlock with it. 
-    update_attribute(:reset_digest, User.digest(reset_token))
+    update_attribute(reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now)
     # self explanitory
     # this attribute can be accessed like this: 
     # User.all[1].reset_digest - that would access the second user
     # it doesn't work during byebug because its not commiting changes to the
     # database.
-    update_attribute(:reset_sent_at, Time.zone.now)
+    
   end
   
   def send_password_reset_email

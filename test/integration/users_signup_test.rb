@@ -54,6 +54,17 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_not is_logged_in?
     # it is avalid token but its for the wrong user
     # (email as identifier possibly)
+    # INDEX PAGE
+    # LOG IN AS VALID USER.
+    get log_in_as(users(:michael))
+    # UNACTIVATED USER IS ON THE SECOND PAGE
+    get users_path, page: 2
+    assert_no_match user.name, response.body
+    # PROFILE PAGE
+    get user_path(user)
+    assert_redirected_to root_url
+    # LOG OUT VALID USER
+    delete logout_path
     get edit_account_activation_path('invalid token')
     assert_not is_logged_in?
     # valid token wrong email

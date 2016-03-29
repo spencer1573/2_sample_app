@@ -118,7 +118,7 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     @user.update_attribute(:reset_sent_at, 3.hours.ago)
     patch password_reset_path(@user.reset_token),
       email: @user.email,
-      user: { password:
+      user: { password:              "foobar",
               password_confirmation: "foobar" }
     assert_response :redirect
     #i'm not sure what this does

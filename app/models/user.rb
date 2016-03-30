@@ -82,6 +82,8 @@ class User < ActiveRecord::Base
     # User.digest(reset_token)... takes the reset token and then
     # it simply bcrypts it then when the reset token comes back through 
     # it can unlock with it. 
+    # i think one of the tests doesn't match up with it right now
+    # its colomns! you didn't update it to that.
     update_attribute(reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now)
     # self explanitory
     # this attribute can be accessed like this: 

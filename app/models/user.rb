@@ -62,7 +62,7 @@ class User < ActiveRecord::Base
   end
   
   def activate 
-    update_attribute(activated: true, activated_at: Time.zone.now)
+    update_columns(activated: true, activated_at: Time.zone.now)
   end
   
   def send_activation_email
@@ -84,7 +84,7 @@ class User < ActiveRecord::Base
     # it can unlock with it. 
     # i think one of the tests doesn't match up with it right now
     # its colomns! you didn't update it to that.
-    update_attribute(reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now)
+    update_columns(reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now)
     # self explanitory
     # this attribute can be accessed like this: 
     # User.all[1].reset_digest - that would access the second user

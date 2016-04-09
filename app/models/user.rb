@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  # i think i get this... this seems like a core concept.. tee hee
+  has_many :microposts
   # this sets up getters and setters for these three methods in the
   # class User see
   # http://stackoverflow.com/questions/4370960/what-is-attr-accessor-in-ruby

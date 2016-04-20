@@ -3,6 +3,7 @@ class Micropost < ActiveRecord::Base
   # we typed 
   # bundle exec rake db:migrate
   belongs_to :user
+  default_scope -> { order(created_at: :desc) }
   #QUESTION: i guess right now thats the only thing we 
   # need to validate when a micropost is created 
   # from the model?

@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   # i think i get this... this seems like a core concept.. tee hee
-  has_many :microposts
+  # dependent is refering to user i'm guessing 
+  # this associates the desctruction of the user with the destruction
+  # of the microposts
+  has_many :microposts, dependent: :destroy
   # this sets up getters and setters for these three methods in the
   # class User see
   # http://stackoverflow.com/questions/4370960/what-is-attr-accessor-in-ruby

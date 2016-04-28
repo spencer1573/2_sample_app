@@ -2,4 +2,5 @@
   <!-- no idea why micropost.user is called that second time -->
   <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
   <span class="user"><%= link_to micropost.user.name, micropost.user %>
+  <span class="content"><%= micropost.content %></span>
   

@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    #QUESTION i don't really understand why the params are the page
     @microposts = @user.microposts.paginate(page: params[:page])
   end
 

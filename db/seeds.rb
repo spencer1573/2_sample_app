@@ -28,4 +28,8 @@ User.create!( name:  "Example User",
                password_confirmation: password,
                activated: true,
                activated_at: Time.zone.now)
+  
+  # so this should have the first 6 users 
+  # by order of creation
+  users = User.order(:created_at).take(6)
 end

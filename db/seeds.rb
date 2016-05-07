@@ -32,4 +32,10 @@ User.create!( name:  "Example User",
   # so this should have the first 6 users 
   # by order of creation
   users = User.order(:created_at).take(6)
+  50.times do 
+    # so i'm guessing when you access the faker::lorem#sentence
+    # it keeps on accessing a random scentence
+    content = Faker::Lorem.sentence(5)
+    
+  end
 end

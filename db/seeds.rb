@@ -36,6 +36,6 @@ User.create!( name:  "Example User",
     # so i'm guessing when you access the faker::lorem#sentence
     # it keeps on accessing a random scentence
     content = Faker::Lorem.sentence(5)
-    
+    users.each { |user| user.microposts.create!(content: content) }    
   end
 end

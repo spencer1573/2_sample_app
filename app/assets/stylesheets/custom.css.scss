@@ -234,3 +234,11 @@ input {
     /* the first value is top and bottom */
     /* the second value is right and left */
     padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .user {
+    /* so em means whatever the current number */
+    /* is times in this case 5 */
+    margin-top: 5em;
+    padding-top: 0;
+  }

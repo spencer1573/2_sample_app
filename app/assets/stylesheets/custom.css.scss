@@ -225,4 +225,12 @@ input {
   }
 }
 
+/* microposts */
 
+.microposts { 
+  list-style: none;
+  padding: 0;
+  li {
+    /* the first value is top and bottom */
+    /* the second value is right and left */
+    padding: 10px 0;

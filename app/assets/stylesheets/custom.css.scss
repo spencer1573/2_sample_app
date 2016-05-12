@@ -242,4 +242,9 @@ input {
     margin-top: 5em;
     padding-top: 0;
   }
+  .content {
+    /* so it appears the block is meaning nothing */
+    /* else is on the same line as it */
+    display: block;
+  }
 }

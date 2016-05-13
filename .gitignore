@@ -18,3 +18,8 @@
 
 #ignore Spring files
 /spring/*.pid
+
+*.swo
+*.swp
+
+.DS_Store

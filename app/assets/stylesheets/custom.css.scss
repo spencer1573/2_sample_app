@@ -249,10 +249,11 @@ input {
     /* margin is the space in between border and */
     /* next element */
     margin-left: 60px;
-  }
-  img {
-    /* displays element has block element like <p> */
-    /* whatever that means */
-    display: block;
+    img {
+      /* displays element has block element like <p> */
+      /* whatever that means */
+      display: block;
+      padding: 5px 0;
+    }
   }
 }
